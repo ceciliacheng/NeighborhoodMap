@@ -1,0 +1,24 @@
+// 清屏
+document.body.innerHTML = '';
+document.body.style.background="white";
+
+var nums = [1,2,3];
+
+// 让我们循环遍历数组中的所有数字
+for (var i = 0; i < nums.length; i++) {
+
+   // 这是循环中当前的数字
+   var num = nums[i];
+
+   // 我们为这个数字创建一个DOM元素
+   var elem = document.createElement('div');
+   elem.textContent = num;
+
+   // ... 然后当点击 (click) 的时候，使用 alert() 提示这个数字
+   elem.addEventListener('click', function() {
+      alert(num);
+   });
+
+   // 最后，我们把这个 dom 元素插入到 document 中去。
+   document.body.appendChild(elem);
+};
