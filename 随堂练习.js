@@ -1,6 +1,6 @@
 // 清屏
 document.body.innerHTML = '';
-document.body.style.background="white";
+//document.body.style.background="white";
 
 var nums = [1,2,3];
 
@@ -15,9 +15,11 @@ for (var i = 0; i < nums.length; i++) {
    elem.textContent = num;
 
    // ... 然后当点击 (click) 的时候，使用 alert() 提示这个数字
-   elem.addEventListener('click', function() {
-      alert(num);
-   });
+   elem.addEventListener('click', function(numCopy) {
+     return function(){
+      alert(numCopy)
+     };
+   })(num);
 
    // 最后，我们把这个 dom 元素插入到 document 中去。
    document.body.appendChild(elem);
