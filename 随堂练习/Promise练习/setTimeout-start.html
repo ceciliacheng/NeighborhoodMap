@@ -7,18 +7,24 @@
 <body>
 	<h1>Did the promise finish?</h1>
 	<div class="completion">Not yet</div>
-	<script>
+<script>
 		function wait(ms) {
-			/*
-			Your code goes here!
-
-			Instructions:
-			(1) Wrap this setTimeout in a Promise. resolve() in setTimeout's callback.
-			(2) console.log(this) inside the Promise and observe the results.
-			(3) Make sure wait returns the Promise too!
-			 */
-			window.setTimeout(function() {}, ms);
+			return new Promise(function(resolve) {
+				console.log(this);//观察作用域
+				window.setTimeout(function() {
+					resolve();//Promise里四个方法之一
+				}, ms);
+			});
 		};
+
+		var milliseconds = 2000;
+		wait(milliseconds).then(finish);
+
+		function finish() {
+			var completion = document.querySelector('.completion');
+			completion.innerHTML = "Complete after " + milliseconds + "ms.";
+		};
+	</script>
 
 		/*
 		Uncomment these lines when you want to test!
